@@ -32,3 +32,15 @@ Back to your CLI, you can do the following in the root of your generated project
     git remote add origin git@github.com:<MY_USERNAME>/<MY-REPO-SLUG>.git
     git push -u origin master
 
+### When trying to install dependency using poetry on Kubuntu 22.10 
+I encounter **[org.freedesktop.DBus.Error.UnknownMethod]** error. For me it can be resolved in a three way:
+Running export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring in shell will work for following poetry commands until you close (exit) your shell session
+
+Add environment variable for each! poetry command, for example PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring poetry install
+
+If you want to preserve (store) this environment variable between shell sessions or system reboot you can add it in .bashrc and .profile example for bash shell:
+
+    echo 'export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring' >> ~/.bashrc
+
+    echo 'export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring' >> ~/.profile  exec "$SHELL"
+
