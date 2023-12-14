@@ -27,7 +27,7 @@ services:
       - {{ cookiecutter.postgres_host }} # my database container is called postgres, not db
     networks:
       - {{ cookiecutter.project_slug }}_network
-  {{ cookiecutter.project_slug }}:
+  {{ cookiecutter.project_slug }}_app:
     build: .
     restart: unless-stopped
     container_name: "{{ cookiecutter.project_slug }}"
