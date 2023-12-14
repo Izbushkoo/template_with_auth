@@ -1,6 +1,6 @@
-version: "3"
+version: "3.8"
 services:
-  postgres:
+  {{ cookiecutter.postgres_host }}:
     container_name: 'postgres_{{ cookiecutter.project_slug }}'
     image: postgres:15
     command: postgres -c "max_connections=10000"
@@ -18,16 +18,16 @@ services:
     ports:
       - "8081:8081"
     links:
-      - postgres:postgres  # my database container is called postgres, not db
+      - {{ cookiecutter.postgres_host }}:postgres  # my database container is called postgres, not db
     env_file:
       - .env
     environment:
       - PGWEB_DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_SERVER}:${POSTGRES_PORT}/${POSTGRES_DB}?sslmode=disable
     depends_on:
-      - postgres  # my database container is called postgres, not db
+      - {{ cookiecutter.postgres_host }} # my database container is called postgres, not db
     networks:
-      - {{ cookiecutter.project_slug }}
-  app:
+      - {{ cookiecutter.project_slug }}_network
+  {{ cookiecutter.project_slug }}:
     build: .
     restart: unless-stopped
     container_name: "{{ cookiecutter.project_slug }}"
@@ -38,8 +38,8 @@ services:
     networks:
       - {{ cookiecutter.project_slug }}
     depends_on:
-      - postgres
+      - {{ cookiecutter.postgres_host }}
       - pg_web
 networks:
-  {{ cookiecutter.project_slug }}:
+  {{ cookiecutter.project_slug }}_network:
     external: false
