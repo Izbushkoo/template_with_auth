@@ -62,8 +62,7 @@ class Settings(BaseSettings):
             path=f"{values.data.get('POSTGRES_DB') or ''}",
         )
 
-    model_config = SettingsConfigDict(case_sensitive=True, env_file='../.env')
+    model_config = SettingsConfigDict(case_sensitive=True)
 
 
 settings = Settings()
-print(settings.SQLALCHEMY_DATABASE_URI)

@@ -21,9 +21,15 @@ sys.path.append(BASE_DIR)
 
 # add your model's MetaData object here
 # for 'autogenerate' support
-from app.database import Base
 
-target_metadata = Base.metadata
+# from app.database import Base
+#
+# target_metadata = Base.metadata
+
+from sqlmodel import SQLModel
+from app.models.user import User
+
+target_metadata = SQLModel.metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
@@ -35,7 +41,9 @@ def get_url():
 
     user = os.getenv("POSTGRES_USER", "{{ cookiecutter.postgres_user }}")
     password = os.getenv("POSTGRES_PASSWORD", "{{ cookiecutter.postgres_password }}")
-    server = os.getenv("POSTGRES_SERVER", "{{ cookiecutter.postgres_host }}:{{ cookiecutter.postgres_port }}")
+    server = os.getenv(
+        "POSTGRES_SERVER", "{{ cookiecutter.postgres_host }}"
+    ) + ":" + os.getenv("POSTGRES_PORT", "{{ cookiecutter.postgres_port }}")
     db = os.getenv("POSTGRES_DB", "{{ cookiecutter.postgres_database }}")
     return f"postgresql://{user}:{password}@{server}/{db}"
 

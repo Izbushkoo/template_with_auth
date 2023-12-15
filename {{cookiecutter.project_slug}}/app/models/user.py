@@ -1,13 +1,13 @@
-from sqlalchemy import Boolean, Column, Integer, String
+from typing import Optional
 
-from app.database import Base
+from sqlmodel import Field, SQLModel
 
 
-class User(Base):
+class User(SQLModel, table=True):
     __tablename__ = "users"
 
-    id = Column(Integer, primary_key=True, index=True)
-    full_name = Column(String, nullable=True)
-    email = Column(String, unique=True, index=True, nullable=False)
-    password = Column(String, nullable=False)
-    is_active = Column(Boolean(), default=True)
+    id: Optional[int] = Field(default=None, primary_key=True)
+    full_name: str
+    email: str
+    password: str
+    is_active: bool = True
