@@ -22,7 +22,7 @@ services:
     env_file:
       - .env
     environment:
-      - PGWEB_DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_SERVER}:${POSTGRES_PORT}/${POSTGRES_DB}?sslmode=disable
+      - PGWEB_DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_SERVER}:5432/${POSTGRES_DB}?sslmode=disable
     depends_on:
       - {{ cookiecutter.postgres_host }} # my database container is called postgres, not db
     networks:
