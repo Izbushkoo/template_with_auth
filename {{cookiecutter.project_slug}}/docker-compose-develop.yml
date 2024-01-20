@@ -10,7 +10,7 @@ services:
     networks:
       - {{ cookiecutter.project_slug }}_network
     ports:
-      - ${POSTGRES_PORT}:5432
+      - ${POSTGRES_PORT_TO_LOCAL_HOST}:5432
   pg_web:
     container_name: 'postgres_{{ cookiecutter.project_slug }}_web'
     image: sosedoff/pgweb
@@ -35,6 +35,8 @@ services:
       - .env
     ports:
       - "${APP_PORT}:8787"
+    volumes:
+      - {{ cookiecutter.path_to_project }}/{{ cookiecutter.project_slug }}/logs:/app/logs
     networks:
       - {{ cookiecutter.project_slug }}_network
     depends_on:

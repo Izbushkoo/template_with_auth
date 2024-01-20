@@ -20,5 +20,7 @@
   "postgres_database": "postgres",
   "application_bind_port": "8787",
   "api_prefix": "/api/v1",
+  "path_to_project_local": "/home/izbushko/projects",
+  "path_to_project_production": "/additional_disk/postgres/{{ cookiecutter.project_slug }}",
   "use_pycharm": "y"
 }
