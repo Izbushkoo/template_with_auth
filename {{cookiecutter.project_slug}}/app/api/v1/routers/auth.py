@@ -14,7 +14,7 @@ from app.services.user import authenticate
 router = APIRouter()
 
 
-@router.post("/token", response_model=Token)
+@router.post("/login/access-token", response_model=Token)
 async def login_for_access_token(
     db: AsyncSession = Depends(deps.get_db_async), form_data: OAuth2PasswordRequestForm = Depends()
 ) -> Any:

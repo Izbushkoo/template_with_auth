@@ -13,7 +13,7 @@ from app.models.user import User as UserModel
 from app.schemas.token import TokenPayload
 from app.services.user import get_user_by_id
 
-reusable_oauth2 = OAuth2PasswordBearer(tokenUrl=f"{settings.API_V1_STR}/login/access-token")
+reusable_oauth2 = OAuth2PasswordBearer(tokenUrl=f"{settings.API_V1_STR}/auth/login/access-token")
 
 
 async def get_db_async() -> Generator:
