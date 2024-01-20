@@ -46,7 +46,7 @@ class Settings(BaseSettings):
             scheme="postgresql",
             username=values.data.get("POSTGRES_USER"),
             password=values.data.get("POSTGRES_PASSWORD"),
-            host=values.data.get("POSTGRES_SERVER") + ":" + str(values.data.get("POSTGRES_PORT")),
+            host=values.data.get("POSTGRES_SERVER") + ":5432",
             path=f"{values.data.get('POSTGRES_DB') or ''}",
         )
 
@@ -58,7 +58,7 @@ class Settings(BaseSettings):
             scheme="postgresql+asyncpg",
             username=values.data.get("POSTGRES_USER"),
             password=values.data.get("POSTGRES_PASSWORD"),
-            host=values.data.get("POSTGRES_SERVER") + ":" + str(values.data.get("POSTGRES_PORT")),
+            host=values.data.get("POSTGRES_SERVER") + ":5432",
             path=f"{values.data.get('POSTGRES_DB') or ''}",
         )
 

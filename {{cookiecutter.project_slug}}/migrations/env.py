@@ -43,7 +43,7 @@ def get_url():
     password = os.getenv("POSTGRES_PASSWORD", "{{ cookiecutter.postgres_password }}")
     server = os.getenv(
         "POSTGRES_SERVER", "{{ cookiecutter.postgres_host }}"
-    ) + ":" + os.getenv("POSTGRES_PORT", "{{ cookiecutter.postgres_port }}")
+    ) + ":" + os.getenv("POSTGRES_PORT_TO_LOCAL_HOST", "{{ cookiecutter.postgres_port }}")
     db = os.getenv("POSTGRES_DB", "{{ cookiecutter.postgres_database }}")
     return f"postgresql://{user}:{password}@{server}/{db}"
 
