@@ -32,4 +32,4 @@ services:
       - pg_web
 networks:
   {{ cookiecutter.project_slug }}_network:
-                                   external: false
+    external: false
