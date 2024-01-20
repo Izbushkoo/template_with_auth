@@ -5,6 +5,9 @@ from typing import Any, Dict, List, Optional, Union
 from pydantic import AnyHttpUrl, HttpUrl, PostgresDsn, field_validator, ValidationInfo
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+from dotenv import load_dotenv
+load_dotenv()
+
 
 class Settings(BaseSettings):
     API_V1_STR: str = "{{ cookiecutter.api_prefix }}"
