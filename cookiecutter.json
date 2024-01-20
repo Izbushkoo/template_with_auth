@@ -19,5 +19,6 @@
   "postgres_password": "postgres",
   "postgres_database": "postgres",
   "application_bind_port": "8787",
-  "api_prefix": "/api/v1"
+  "api_prefix": "/api/v1",
+  "use_pycharm": "y"
 }
