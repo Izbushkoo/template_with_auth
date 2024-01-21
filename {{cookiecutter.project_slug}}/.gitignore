@@ -326,3 +326,4 @@ tags
 .pytest_cache/
 
 .ipython/
+.env
