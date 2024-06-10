@@ -21,5 +21,6 @@
   "application_bind_port": "8787",
   "api_prefix": "/api/v1",
   "path_to_project_production": "/home/izbushko/suppliers",
-  "path_to_project": "/home/izbushko/projects/allegro_suppliers"
+  "path_to_project": "/home/izbushko/projects/allegro_suppliers",
+  "use_pycharm": "y"
 }
